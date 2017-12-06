@@ -11,6 +11,7 @@
 1. localStorage
 2. sessionStorage
 3. indexDB
+4. 离线存储已废弃 
 
 ### 多媒体
 1. audio
