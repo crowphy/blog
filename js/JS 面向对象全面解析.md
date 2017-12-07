@@ -4,9 +4,9 @@
 > 无序属性的集合，其属性可以包含基本值，对象或者函数。
 
 ### 对象的相关概念
-* 继承：
-* 原型：
-* 原型链：
+
+* 原型：我们每创建的一个函数都有一个 prototype（原型）属性，这个属性是一个指针，指向一个对象，而这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法。
+* 原型链：每个构造函数都有一个原型对象，原型对象包含一个指向构造函数的指针```constructor```，而实例都包含一个指向原型对象的内部指针```[[Prorotype]]```。如果让原型对象等于另一个类型的实例，那么这个原型对象将包含一个指向另一个原型的指针，相应地，另一个原型中也包含指向另一个构造函数的指针。假如另一个原型又是另一个类型的实例，那么上述关系依然成立，如此层层递进就构成了实例与原型的链条，也就是原型链。
 
 
 ### 对象的相关属性及方法
@@ -16,9 +16,30 @@
 3. ```constructor```：
 
 #### 方法
-1. ```instanceof```：
-2. ```typeof```：
-2. ```Object.create()```
+1. ```instanceof```：判断一个对象是否是某个构造函数的实例。每个对象都是创建它的构造函数及父类构造函数的实例。但是```null```不是任何构造函数的实例。
+
+```js
+function Person(name) {
+	this.name = name;
+	this.sayName = function() {
+		console.log(this.name);
+	}
+}
+var p1 = new Person('Crowphy');
+console.log(p1 instanceof Person);  //true
+// 所有对象都继承自 Object，null除外
+console.log(p1 instanceof Object);  //true
+console.log(null instanceof Object);  //false
+```
+
+2. ```typeof```：判断一个变量的数据类型，无法判断具体的构造函数。
+2. ```Object.create()```：
+1. ```Object.defineProperty(obj, property, {attributes})```：修改特性。
+3. ```Object.defineProperties(obj, {Properties})```：一次性定义多个属性的特性。
+
+4. ```Object.getOwnPropertyDescriptor(obj, property)```：读取相关属性的特性。
+5. 
+
 
 ### 对象之间的关系
 图
@@ -37,7 +58,7 @@
 * ```[[Writable]]```：可写属性。表示能否修改属性的值。对于直接定义在对象上的属性，默认为 true。
 * ```[[Value]]```：值属性。包含此属性的数据值。默认为 undefined。
 
-> 可以通过 ```Object.define(obj, property, {attributes})```修改特性。
+> 可以通过 ```Object.defineProperty(obj, property, {attributes})```修改特性。
 
 ```js
 var person = {};
@@ -162,10 +183,10 @@ function Person(name, age, job){
 	this.friends = ["Shelby", "Court"];
 }
 Person.prototype = {
-    constructor : Person,
-    sayName : function(){
-        console.log(this.name);
-    }
+	constructor : Person,
+	sayName : function(){
+	    console.log(this.name);
+	}
 }
 var person1 = new Person("Crowphy", 29, "Software Engineer");
 var person2 = new Person("Greg", 27, "Doctor");
@@ -180,16 +201,16 @@ console.log(person1.sayName === person2.sayName);//true
 
 ```js
 function Person(name, age, job){
-	//属性
-	this.name = name; 
-	this.age = age; 
-	this.job = job;
-	//方法
-	if (typeof this.sayName != "function") {
-	    Person.prototype.sayName = function(){
-	        console.log(this.name);
-		}; 
-	}
+    //属性
+    this.name = name; 
+    this.age = age; 
+    this.job = job;
+    //方法
+    if (typeof this.sayName != "function") {
+        Person.prototype.sayName = function(){
+            console.log(this.name);
+    	}; 
+    }
 }
 ```
 通过判断方法存在与否以保证每个方法只创建一次。
@@ -229,6 +250,7 @@ friend.sayName();  //"Crowphy"
 相比于寄生构造模式的不同，一不使用 new；二方法中不使用this。
 
 ### 继承
+继承分为接口继承和实现继承。接口继承只继承方法签名，实现继承则继承实际的方法。ES 只支持实现继承，且其实现继承主要依靠原型链。
 > 重点：组合继承和寄生组合式继承
 
 #### 原型链
