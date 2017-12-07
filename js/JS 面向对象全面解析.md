@@ -196,6 +196,7 @@
 #### 构造函数
 #### 组合继承（伪经典继承）
 
+	```js
 	function Super(name) {
 		this.name = name;
 	}
@@ -211,6 +212,7 @@
 	Sub.prototype = new Super();
 	// 将子类原型的构造函数指回Sub
 	Sub.prototype.constructor = Sub;
+	```
 
 > 优点：组合继承避免了原型链和借用构造函数的缺陷，融合了它们的优点，成为 JavaScript 中最常用的继承模式。而且，原型链保持不变，instanceof 和 isPrototypeOf()也能够用于识别基于组合继承创建的对象。
 
