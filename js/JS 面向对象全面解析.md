@@ -42,7 +42,7 @@ console.log(null instanceof Object);  //false
 
 
 ### 对象之间的关系
-![对象之间的关系](oop.png)
+图
 
 ### 理解对象
 ##### 属性特性：
@@ -104,7 +104,8 @@ var a = {}
 3.
 
 ```js
-var a = Object.create(null)
+var a = Object.create(null) // 没有原型的对象
+var a = Object.create(Object.prototype) // 等同于var a = {}
 ```
 	
 ### 多次创建
