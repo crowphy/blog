@@ -42,7 +42,7 @@ console.log(null instanceof Object);  //false
 
 
 ### 对象之间的关系
-图
+![对象之间的关系](oop.png)
 
 ### 理解对象
 ##### 属性特性：
