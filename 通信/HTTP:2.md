@@ -36,6 +36,9 @@ SPDY 是 Google 开发的一个实验性协议，于 2009 年年中发布，其�
 
 
 迁移到 HTTP/2 不仅可以减少网络延迟，还有助于提高通量和降低运行成本。
+
+### 我的理解
+TCP 作为 HTTP 协议的底层协议，其功能从 HTTP1.x 以来是完善的。基于当时情况的考量，HTTP1.x 要求请求与响应必须一一对应。
 ### 参考链接
 [HTTP/2 简介-Google Developers](https://developers.google.com/web/fundamentals/performance/http2/?hl=zh-cn)
 
