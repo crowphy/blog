@@ -29,6 +29,8 @@
 
 [vue组件间通信方式总结](https://github.com/crowphy/blog/blob/master/vue/vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93.md)
 
+[vue执行流程及双向绑定](https://github.com/crowphy/blog/blob/master/vue/vue%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A.md)
+
 ### node
 
 [深入浅出 Node.js学习笔记](https://github.com/crowphy/blog/blob/master/%E5%90%8E%E5%8F%B0/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%20Node.md)
