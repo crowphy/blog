@@ -30,5 +30,10 @@ getElementsByClassName()|	返回包含带有指定类名的所有元素的节点
 * str.match(regexp):
 * str.normalize([form]):
 * str.padEnd(targetLength [, padString]):
-* 
+* str.replace():
+* str.split():
+* str.slice():
+* str.substr():
+* str.substring():
+* str.trim():
 
