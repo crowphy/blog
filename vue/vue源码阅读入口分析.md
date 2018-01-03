@@ -53,26 +53,3 @@
   }</code></pre>
   就是打包开发环境所需要的配置。然后就找到`web/entry-runtime-with-compiler.js`，也就是 vue 的入口文件。接下来就从这个文件出发一步步发掘 vue 的运行逻辑。
   
-    <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title></title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-    <div class="app">
-      <div class="text">{{ text }}</div>
-      <input type="text" v-model="text">
-    </div>
-    <script src="../dist/vue.js"></script>
-    <script>
-      var app = new Vue({
-        el: '.app',
-        data: {
-          text: 'hello'
-        }
-      })
-    </script>
-  </body>
-</html>
