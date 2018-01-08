@@ -32,14 +32,127 @@ vue通过数据劫持的方式实现数据到视图的绑定，它借助ES5的de
 
 ### JS的执行过程
 
+### 偏函数
+Partial Application(偏函数应用) 是指使用一个函数并将其应用一个或多个参数，但不是全部参数，在这个过程中创建一个新函数接受余下参数。即将一个 n 元函数转换为一个你 n-x 元的函数，其中 x 为在创建新函数时随旧函数传入的参数个数。bind方法也是偏函数的应用，只不过它会改变 this 的指向。
 
+代码：
+
+```js
+function partial(fn) {
+  
+  var args = Array.prototype.slice.call(arguments, 1) || [];
+  var parted = function () {
+    args = args.concat(Array.prototype.slice.call(arguments));
+    return fn.apply(this, args);
+  }
+  return parted;
+}
+
+function fn1(a, b, c) {
+  return a + b + c;
+}
+
+var partialFn1 = partial(fn1, 1);
+
+partialFn1(2, 3);
+```
 
 ### 函数柯里化
 Currying(柯里化) 是把一个接受 n 个参数的函数转换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。也就是说每个函数都接受1个参数。即将一个 n 元函数转换为 n 个一元函数。
-### 偏函数
-Partial Application(偏函数应用) 是指使用一个函数并将其应用一个或多个参数，但不是全部参数，在这个过程中创建一个新函数接受余下参数。即将一个 n 元函数转换为一个你 n-x 元的函数，其中 x 为在创建新函数时随旧函数传入的参数个数。bind方法也是偏函数的应用，只不过它会改变 this 的指向。
+
+代码：
+
+```js
+function curry(fn) {
+  var argsLength = fn.length;
+  var args = [];
+  var curried = function() {
+    args = args.concat(Array.prototype.slice.call(arguments));
+    argsLength--;
+    var result = argsLength > 0 ? curried : fn.apply(this, args);
+    return result;
+  }
+  return curried;
+}
+
+function fn1(a, b, c) {
+  return a + b + c;
+}
+
+var curryFn1 = curry(fn1);
+
+curryFn1(1)(2)(3);
+```
+
+混合柯里化与偏函数应用的实现：
+
+```js
+/**
+ * 柯里化和偏函数应用
+ * 核心是使用闭包保存每次调用传入的参数，
+ * 每次调用时将参数的个数与原函数的长度比较，
+ * 小于则返回parted继续收集余下参数，
+ * 等于则执行原函数，
+ * 没有大于的情况
+ * 
+ * @param {any} fn 
+ * @returns 
+ */
+function partial(fn) {
+  var slice = Array.prototype.slice;
+  var args = slice.call(arguments, 1) || [];
+  var fnLength = fn.length;
+  var parted = function () {
+    args = args.concat(slice.call(arguments));
+    var result = fnLength > args.length ? parted : fn.apply(this, args);
+    return result;
+  }
+  return parted;
+}
+
+function fn1(a, b, c) {
+  console.log(a, b, c);
+  return a + b + c;
+}
+
+var partialFn1 = partial(fn1, 1);
+
+partialFn1(2)(3);
+```
+
+混合柯里化与偏函数应用的es6实现：
+
+```js
+/**
+ * 柯里化和偏函数应用
+ * 核心是使用闭包保存每次调用传入的参数，
+ * 每次调用时将参数的个数与原函数的长度比较，
+ * 小于则返回parted继续收集余下参数，
+ * 等于则执行原函数，
+ * 没有大于的情况
+ * 
+ * @param {any} fn 
+ * @returns 
+ */
+var partial =(fn, ...rest) => 
+  parted = (...args) =>
+    fn.length > args.length + rest.length
+      ? (arg) => parted(...args, arg)
+      : fn(...rest, ...args);
+      
+function fn1(a, b, c) {
+  console.log(a, b, c);
+  return a + b + c;
+}
+
+var partialFn1 = partial(fn1, 1);
+
+partialFn1(2)(3);
+```
+
+
 ### 尾调用
-尾调用（Tail Call）是函数式编程的一个重要概念，本身非常简单，一句话就能说清楚，就是指某个函数的最后一步是调用另一个函数。
+尾调用（Tail Call）是函数式编程的一个重要概念，本身非常简单，一句话就能说清楚，就是指某个函数的最后一步是调用另一个函数。尾调用不一定出现在函数尾部，只要是最后一步操作即可。
 ### 尾调用优化
 即只保留内层函数的调用帧。如果所有函数都是尾调用，那么完全可以做到每次执行时，调用帧只有一项，这将大大节省内存。这就是“尾调用优化”的意义。
 
