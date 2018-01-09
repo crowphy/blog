@@ -1,6 +1,7 @@
 # Blog
 个人之工作经验总结，如有错误之处欢迎提 issue！
 ### 置顶
+[一些问题](https://github.com/crowphy/blog/blob/master/some-question.md)
 [error-record常见错误记录与总结](https://github.com/crowphy/blog/blob/master/error-record%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95%E4%B8%8E%E6%80%BB%E7%BB%93.md)
 ### 性能相关
 [缓存](https://github.com/crowphy/blog/blob/master/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E7%BC%93%E5%AD%98.md)
