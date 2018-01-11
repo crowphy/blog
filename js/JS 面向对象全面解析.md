@@ -168,21 +168,50 @@ function Person(name) {
 	}
 }
 var p1 = new Person('Crowphy');
-```
-使用 new 创建对象实际会经历以下四个阶段：
-
-> 1. 创建一个新对象；
-> 2. 将构造函数的作用域赋给新对象（将 this 指向该对象）；
-> 3. 执行构造函数中的代码（为该对象添加属性）；
-> 4. 返回该对象。
-
-```js
 console.log(p1 instanceof Object);  //true
 console.log(p1 instanceof Person);  //true
 ```
 创建自定义的构造函数意味着将来可以将它的实例标识为一种特定的类型；而这正是构造函数模式胜过工厂模式的地方。
 
 > 缺点：每个方法都要在每个 实例上重新创建一遍。
+
+
+使用 new 创建对象实际会经历以下四个阶段：
+
+> 1. 创建一个新对象；
+> 2. 将该对象的`__proto__`属性指向构造函数的`prototype`；
+> 2. 将构造函数的作用域赋给新对象（将 this 指向该对象）；
+> 3. 执行构造函数中的代码（为该对象添加属性）；
+> 4. 返回该对象。
+
+new的模拟实现：
+
+```js
+/**
+ * new的模拟实现
+ * 
+ * @returns 
+ */
+function myNew() {
+
+  var obj = Object.create(Object.prototype);
+  var ctr = Array.prototype.shift.call(arguments);
+  obj.__proto__ = ctr.prototype;
+  var result = ctr.apply(obj, arguments);
+  return typeof result === 'object' ? result || obj : obj;
+}
+
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.sayName = function() {
+  console.log(this.name)
+}
+var p = myNew(Person, 'Cr')
+p.sayName() // 'Cr'
+```
+
 
 ##### Tips
 如果构造函数中 ```return``` 了一个对象，则会覆盖默认返回的对象
