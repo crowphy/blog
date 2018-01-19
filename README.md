@@ -1,5 +1,7 @@
 # Blog
-个人之工作经验总结，如有错误之处欢迎提 issue！
+主要记录平时的经验总结与读书笔记，着重记录自己关注的要点，完善程度尚需提升。
+如有错误之处欢迎提 issue！
+
 
 ### 性能相关
 [缓存](https://github.com/crowphy/blog/blob/master/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E7%BC%93%E5%AD%98.md)
