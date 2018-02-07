@@ -12,7 +12,6 @@
 
 [vue源码阅读入口分析](https://github.com/crowphy/blog/blob/master/vue/vue%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E5%85%A5%E5%8F%A3%E5%88%86%E6%9E%90.md)
 
-[vue执行流程](https://github.com/crowphy/blog/blob/master/vue/vue%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.md)
 
 [vue执行流程及双向绑定](https://github.com/crowphy/blog/blob/master/vue/vue%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A.md)
 
