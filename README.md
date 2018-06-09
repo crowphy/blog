@@ -1,9 +1,8 @@
 # Blog
-个人之工作经验总结，如有错误之处欢迎提 issue！
-### 置顶
-[一些问题](https://github.com/crowphy/blog/blob/master/some-question.md)
+主要记录平时的经验总结与读书笔记，着重记录自己关注的要点，完善程度尚需提升。
+如有错误之处欢迎提 issue！
 
-[error-record常见错误记录与总结](https://github.com/crowphy/blog/blob/master/error-record%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95%E4%B8%8E%E6%80%BB%E7%BB%93.md)
+
 ### 性能相关
 [缓存](https://github.com/crowphy/blog/blob/master/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E7%BC%93%E5%AD%98.md)
 
@@ -13,9 +12,6 @@
 
 [vue源码阅读入口分析](https://github.com/crowphy/blog/blob/master/vue/vue%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E5%85%A5%E5%8F%A3%E5%88%86%E6%9E%90.md)
 
-[vue执行流程](https://github.com/crowphy/blog/blob/master/vue/vue%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.md)
-
-[vue组件间通信方式总结](https://github.com/crowphy/blog/blob/master/vue/vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93.md)
 
 [vue执行流程及双向绑定](https://github.com/crowphy/blog/blob/master/vue/vue%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A.md)
 
@@ -49,3 +45,8 @@
 ### 安全
 
 [CSRF](https://github.com/crowphy/blog/blob/master/%E5%AE%89%E5%85%A8/CSRF.md)
+
+### 置顶
+[一些问题](https://github.com/crowphy/blog/blob/master/some-question.md)
+
+[error-record常见错误记录与总结](https://github.com/crowphy/blog/blob/master/error-record%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95%E4%B8%8E%E6%80%BB%E7%BB%93.md)

@@ -167,3 +167,8 @@ ES6 的尾调用优化只在严格模式下开启，正常模式是无效的。
 函数调用自身，称为递归。如果尾调用自身，就称为尾递归。
 
 递归非常耗费内存，因为需要同时保存成千上百个调用帧，很容易发生“栈溢出”错误（stack overflow）。但对于尾递归来说，由于只存在一个调用帧，所以永远不会发生“栈溢出”错误。
+
+
+###Cookie
+Cookie的安全策略和Javascript的同源策略并不完全相同，Cookie只受Domian、Path、Expires、HttpOnly、Secure等属性的影响。
+Cookie的传输并不受端口限制。当Cookie属性secure设置为true时，Cookie只能在https中传输，http不会传输。
