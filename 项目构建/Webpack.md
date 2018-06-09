@@ -46,7 +46,7 @@ plugins：插件，比loader更强大，能使用更多webpack的api
 安装 webpack 模块之后, 可是使用 webpack 这个命令行工具
 搭配使用参数, 也可以配置 webpack.config.js 文件直接运行 webpack 调用，推荐使用配置文件。
 
-常用目录结构
+常见目录结构
 
     app
     |__dist
@@ -64,14 +64,16 @@ plugins：插件，比loader更强大，能使用更多webpack的api
     
 下面是一个简单的配置文件示例：
 
-`// webpack.config.js`
-`module.exports = {
-entry: './main.js',
-output: {
-  	 path: __dirname + '/dist/js',
-    filename: 'bundle.js'       
-  }
-};`
+```js
+// webpack.config.js
+module.exports = {
+    entry: './main.js',
+    output: {
+      	 path: __dirname + '/dist/js',
+        filename: 'bundle.js'       
+      }
+    };
+```
 此处 main.js 就是入口文件，webpack 将从这个文件入手开始查找项目依赖的文件；output 是打包生成的文件
 
 通过使用不同的loader，webpack通过调用外部的脚本或工具可以对各种各样的格式的文件进行处理，比如说分析JSON文件并把它转换为JavaScript文件，或者说把下一代的JS文件（ES6，ES7)转换为现代浏览器可以识别的JS文件。或者说对React的开发而言，合适的Loaders可以把React的JSX文件转换为JS文件。
