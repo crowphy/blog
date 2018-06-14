@@ -51,8 +51,7 @@
 
 ## 4. 如何编写一个 loader ##
 
-loader的入口需要导出一个函数，这个函数要干的事情就是转换一个文件的内容。
-函数接收的参数content是一个文件在转换前的字符串形式内容，需要返回一个新的字符串形式内容作为转换后的结果，所有通过模块化倒入的文件都会经过loader。从这里可以看出loader只能处理一个个单独的文件而不能处理代码块。
+loader本质就是接收字符串(或者buffer)，再返回处理完的字符串(或者buffer)的过程。webpack会将加载的资源作为参数传入loader方法，交于loader处理，再返回。所有通过模块化倒入的文件都会经过loader。从这里可以看出loader只能处理一个个单独的文件而不能处理代码块。
 
 ## 5. 如何编写一个 plugin ##
 插件是 webpack 的支柱功能。通过插件可以实现loader所不能实现的功能。在webpack的生命周期中会广播出许多事件，插件会监听这些事件，然后在合适的时机通过webpack提供的api更改输出结果。
@@ -110,3 +109,43 @@ Compilation同上
 参见`webpack/lib/Compiler.js`
 
 ## 6. 常用打包优化手段 ##
+### 常用方法 ###
+1. 优化loader配置
+	- 缩小文件匹配范围(include/exclude)
+	- 缓存loader的执行结果(cacheDirectory)
+2. resolve优化配置
+	- 优化模块查找路径 resolve.modules
+	- resolve.alias 配置路径别名
+	- resolve.extensions
+4. 提取公共代码与第三方代码
+1. module.noParse
+	- 用了noParse的模块将不会被loaders解析，所以当我们使用的库如果太大，并且其中不包含import require、define的调用，我们就可以使用这项配置来提升性能, 让 Webpack 忽略对部分没采用模块化的文件的递归解析处理。
+1. HappyPack
+	- 让webpack对loader的执行过程，从单一进程形式扩展为多进程模式，也就是将任务分解给多个子进程去并发的执行，子进程处理完后再把结果发送给主进程。从而加速代码构建。
+1. DLL动态链接库
+	- 单独创建一个配置文件把常用的类库打包到dll中，然后在主配置文件中直接引用
+1. ParallelUglifyPlugin
+	- 这个插件可以帮助有很多入口点的项目加快构建速度。把对JS文件的串行压缩变为开启多个子进程并行进行uglify。
+1. Tree Shaking
+1. 区分开发和生产环境
+3. 实时重新加载(live reloading) 和 模块热替换(HMR)
+5. 懒加载(按需加载)
+6. 开启Scope Hoisting
+#### production模式 ####
+1. 生产环境默认开启了很多代码优化（minify，splite等）
+1. 开发时开启注视和验证，并且自动加上了eval devtool
+1. 生产环境不支持watching，开发环境优化了重新打包的速度
+1. 默认开启了Scope hoisting和Tree-shaking（原ModuleConcatenationPlugin）
+1. 自动设置process.env.NODE_ENV到不同环境，也就是不需要DefinePlugin来做这个了
+1. 如果你给mode设置为none，所有默认配置都去掉了
+1. 如果不加这个配置webpack会出现提醒，所以还是加上吧
+### development模式 ###
+1. 主要优化了增量构建速度和开发体验
+1. process.env.NODE_ENV 的值不需要再定义，默认是 development
+1. 开发模式下支持注释和提示，并且支持 eval 下的 source maps
+
+## 7.优化开发体验 ##
+1. 缩小文件搜索范围
+2. 开启babel-loader缓存
+3. 使用alias
+4. 使用noParse
