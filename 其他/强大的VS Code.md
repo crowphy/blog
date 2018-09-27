@@ -19,6 +19,7 @@ https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf
 快速打开文件: crtl/cmd+p
 
 task命令: 执行 package.json 里的脚本
+cmd/ctrl+p->task 空格
 
 全局搜索: ctrl/cmd+shift+f
 
@@ -39,7 +40,7 @@ task命令: 执行 package.json 里的脚本
 跳转到指定的行数: ctrl+g
 
 ##扩展插件
-eslint: 
+eslint: 接管原生 js 提示，可以自定制提示规则。
 
 emmet: html 快速生成工具
 
@@ -73,10 +74,14 @@ Path Intellisense: 自动路劲补全
 
 Project Manager: 在多个项目之前快速切换的工具
 
-fileheader: 顶部注释模板，可定义作者、时间等信息，并会自动更新最后修改时间
+fileheader(ctrl+alt+i): 顶部注释模板，可定义作者、时间等信息，并会自动更新最后修改时间
 
 filesize: 在底部状态栏显示当前文件大小，点击后还可以看到详细创建、修改时间
 
-Bracket Pair Colorizer: 让括号拥有独立的颜色，易于区分，可以配合任意主题使用
+Bracket Pair Colorizer 和 Indent Rainbow: 大部分的语言都需要使用括号，但是括号之间的嵌套会让代码看得很难受。Bracket Pair Colorizer和Indent Rainbow，这两个插件可以让不同缩减的括号显示不同的颜色。
 
 Import Cost: 引入包大小计算,对于项目打包后体积掌握很有帮助
+
+REST Client: 作为Web开发人员，我们经常需要使用 REST API。为了检查URL并检查响应，使用 Postman 等工具。但是，当编辑器可以轻松完成相同的任务时，为什么还要使用不同的应用程序呢。欢迎使用 REST Client。它允许您在Visual Studio Code中直接发送 HTTP 请求并查看响应。
+
+
