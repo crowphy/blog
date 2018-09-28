@@ -82,6 +82,6 @@ Bracket Pair Colorizer 和 Indent Rainbow: 大部分的语言都需要使用括�
 
 Import Cost: 引入包大小计算,对于项目打包后体积掌握很有帮助
 
-REST Client: 作为Web开发人员，我们经常需要使用 REST API。为了检查URL并检查响应，使用 Postman 等工具。但是，当编辑器可以轻松完成相同的任务时，为什么还要使用不同的应用程序呢。欢迎使用 REST Client。它允许您在Visual Studio Code中直接发送 HTTP 请求并查看响应。
+~~REST Client: 它允许您在Visual Studio Code中直接发送 HTTP 请求并查看响应。~~
 
 
